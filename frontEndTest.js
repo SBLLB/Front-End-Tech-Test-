@@ -105,6 +105,20 @@ console.log(LinksLife());
 =====
 // 7) The function 'bind' isn't available in older browsers create a shim for it
 //
+
+Function.prototype.bind = Function.prototype.bind || function(to){
+  var partial = Array.prototype.splice.call(arguments, 1),
+    fn  = this;
+  var bound = function (){
+    var args = partial.concat(Array.prototype.splice.call(arguments, 0));
+    if (!(this instanceof bound)){
+      return fn.apply(to, args);
+    }
+    fn.apply(this, args);
+  }
+    bound.prototype = fn.prototype;
+  return bound;
+};
 ========================================================================
 =====
 //
