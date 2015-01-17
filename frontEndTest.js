@@ -86,10 +86,13 @@ function masterSum () {
  };
  console.log(Hero.getLife());
  // a) -> ........... 
+-> 100
 
  var LinksLife = Hero.getLife;
  console.log(LinksLife());
  // b) -> ............
+-> undefined
+
 ========================================================================
 =====
 // 6) 5b is incorrect, use Function.prototype.bind to make it return the same
