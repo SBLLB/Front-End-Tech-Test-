@@ -99,6 +99,8 @@ function masterSum () {
 // result as 5a:
 // console.log(Hero.getLife());
 //
+var LinksLife =  Hero.getLife.bind(Hero);
+console.log(LinksLife());
 ========================================================================
 =====
 // 7) The function 'bind' isn't available in older browsers create a shim for it
