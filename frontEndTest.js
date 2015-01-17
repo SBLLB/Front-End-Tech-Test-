@@ -58,11 +58,19 @@ String.prototype.camelCase = function () {
  sum(1,2,3,4,5,6);
  // -> 21
 //
-
+function sum(){
+    return masterSum.apply(this, arguments);
+}
 ========================================================================
 =====
 // 4) Rewrite the 'masterSum' function so it uses Array.prototype.reduce()
 //
+function masterSum () {
+  return Array.prototype.reduce.call(arguments, function (memo, i) {
+    return memo + i;
+  }, 0);
+}
+
 
 ========================================================================
 =====
@@ -77,12 +85,11 @@ String.prototype.camelCase = function () {
  }
  };
  console.log(Hero.getLife());
- // a) -> ............
+ // a) -> ........... 
+
  var LinksLife = Hero.getLife;
  console.log(LinksLife());
  // b) -> ............
-//
-
 ========================================================================
 =====
 // 6) 5b is incorrect, use Function.prototype.bind to make it return the same
@@ -91,6 +98,10 @@ String.prototype.camelCase = function () {
 //
 ========================================================================
 =====
+// 7) The function 'bind' isn't available in older browsers create a shim for it
 //
-========
+========================================================================
+=====
+//
+
 
